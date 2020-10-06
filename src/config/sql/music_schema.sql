@@ -73,9 +73,13 @@ CREATE TABLE `playlist_music` (
 CREATE TABLE `user` (
   `uuid` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   `email` VARCHAR(40) NOT NULL UNIQUE,
-  `fullname` VARCHAR(40) NOT NULL,
+  `display_name` VARCHAR(40) NOT NULL,
+  `username` VARCHAR(40) NOT NULL UNIQUE,
   `del_flg` TINYINT DEFAULT 0,
+  `validation` TINYINT DEFAULT 0, 
   `image_url` VARCHAR(100),
+  `refresh_token` TEXT NULL,
+  `secret` CHAR(60) NOT NULL,
    PRIMARY KEY (uuid)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -101,10 +105,9 @@ CREATE TABLE `comment` (
 CREATE TABLE `admin` (
   `admin_id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(40) NOT NULL UNIQUE,
-  `password` VARCHAR(128) NOT NULL,
   `del_flg` TINYINT DEFAULT 0,
-  `refresh_token` VARCHAR(128),
-  `salt` 
+  `refresh_token` TEXT NULL,
+  `secret` CHAR(60) NOT NULL,
    PRIMARY KEY (admin_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -188,3 +191,13 @@ CREATE TABLE `suggest_music` (
   CONSTRAINT fk_suggest_music_music FOREIGN KEY (music_id) REFERENCES music (music_id) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT fk_suggest_music_suggest FOREIGN KEY (suggest_id) REFERENCES suggestplaylist (suggest_id) ON DELETE RESTRICT ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Config mysql
+-- mysql -u root
+-- USE mysql;
+-- CREATE USER 'auth' IDENTIFIED BY 'auth';
+-- FLUSH PRIVILEGES;
+-- GRANT ALL PRIVILEGES ON music_life.admin TO 'auth';
+-- FLUSH PRIVILEGES;
+-- GRANT ALL PRIVILEGES ON music_life.user TO 'auth';
+-- FLUSH PRIVILEGES;
