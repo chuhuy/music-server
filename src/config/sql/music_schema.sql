@@ -13,6 +13,7 @@ CREATE TABLE `music` (
   `description` TEXT,
   `area` TINYINT DEFAULT 0,
   `url` VARCHAR(100) NOT NULL,
+  `image_url` VARCHAR(100),
   `monthly_counter` INT DEFAULT 0,
   `total_counter` BIGINT DEFAULT 0,
   `album_id` BIGINT UNSIGNED DEFAULT NULL,
@@ -27,6 +28,7 @@ CREATE TABLE `music` (
 CREATE TABLE `genre` (
   `genre_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(40) NOT NULL,
+  `image_url` VARCHAR(100),
    PRIMARY KEY (genre_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -50,6 +52,7 @@ CREATE TABLE `playlist` (
   `playlist_id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(50) NOT NULL,
   `uuid` BIGINT UNSIGNED NOT NULL,
+  `image_url` VARCHAR(100),
    PRIMARY KEY (playlist_id),
    CONSTRAINT fk_playlist_user FOREIGN KEY (uuid) REFERENCES user (uuid) ON DELETE RESTRICT ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -72,14 +75,15 @@ CREATE TABLE `playlist_music` (
 
 CREATE TABLE `user` (
   `uuid` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `email` VARCHAR(40) NOT NULL UNIQUE,
+  `email` VARCHAR(40) UNIQUE,
   `display_name` VARCHAR(40) NOT NULL,
   `username` VARCHAR(40) NOT NULL UNIQUE,
   `del_flg` TINYINT DEFAULT 0,
   `validation` TINYINT DEFAULT 0, 
   `image_url` VARCHAR(100),
+  `default_avatar` TINYINT DEFAULT 0,
   `refresh_token` TEXT NULL,
-  `secret` CHAR(60) NOT NULL,
+  `secret` CHAR(60),
    PRIMARY KEY (uuid)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -92,7 +96,7 @@ CREATE TABLE `comment` (
   `content` TEXT NOT NULL,
   `uuid` BIGINT UNSIGNED NOT NULL,
   `music_id` BIGINT UNSIGNED NOT NULL,
-  `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIME,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
    PRIMARY KEY (comment_id),
    CONSTRAINT fk_comment_user FOREIGN KEY (uuid) REFERENCES user (uuid) ON DELETE RESTRICT ON UPDATE CASCADE,
    CONSTRAINT fk_comment_music FOREIGN KEY (music_id) REFERENCES music (music_id) ON DELETE RESTRICT ON UPDATE CASCADE
@@ -119,6 +123,7 @@ CREATE TABLE `album` (
   `album_id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(40) NOT NULL,
   `release_date` DATETIME NOT NULL,
+  `image_url` VARCHAR(100),
   `description` TEXT,
    PRIMARY KEY (album_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -173,6 +178,7 @@ CREATE TABLE `album_artist` (
 CREATE TABLE `suggestplaylist` (
   `suggest_id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(50) NOT NULL,
+  `image_url` VARCHAR(100),
   PRIMARY KEY (suggest_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
