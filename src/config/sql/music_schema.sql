@@ -10,8 +10,6 @@ CREATE TABLE `music` (
   `music_id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(40) NOT NULL,
   `release_date` DATETIME NOT NULL,
-  `description` TEXT,
-  `area` TINYINT DEFAULT 0,
   `url` VARCHAR(100) NOT NULL,
   `image_url` VARCHAR(100),
   `monthly_counter` INT DEFAULT 0,
@@ -21,6 +19,14 @@ CREATE TABLE `music` (
    CONSTRAINT `fk_music_album` FOREIGN KEY (album_id) REFERENCES album (album_id) ON DELETE RESTRICT ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+
+CREATE TABLE `user_music` (
+  `uuid` BIGINT UNSIGNED NOT NULL,
+  `music_id` BIGINT UNSIGNED NOT NULL,
+  PRIMARY KEY (uuid, music_id),
+  CONSTRAINT fk_user_music_user FOREIGN KEY (uuid) REFERENCES user (uuid) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT fk_user_music_music FOREIGN KEY (music_id) REFERENCES music (music_id) ON DELETE RESTRICT ON UPDATE CASCADE
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 --
 -- Table structure for table `genre`
 --
