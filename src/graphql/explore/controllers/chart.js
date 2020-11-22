@@ -1,6 +1,6 @@
 const Explore = require('./../models/explore');
 
-const chartController = (args, callback) => {
+const chartController = (args) => {
     let explore = new Explore();
 
     switch (args.area) {
