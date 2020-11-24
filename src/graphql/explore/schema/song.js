@@ -6,7 +6,7 @@ const songSchema = `
         url: String!
         image_url: String
         lyric: String
-        artist: [Artist]
+        artists: String
     }
 `;
 

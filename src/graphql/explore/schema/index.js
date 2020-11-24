@@ -9,6 +9,7 @@ const schema = buildSchema(`
         chart(area: Area): [Song]
         genres: [Genre]
         latestSongs(first: Int offset: Int): [Song]
+        songsByGenre(first: Int offset: Int genre_id: Int): [Song]
     }
 `.concat(
     enums,
