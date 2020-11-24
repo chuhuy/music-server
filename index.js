@@ -12,6 +12,7 @@ const NoIntrospection = require('graphql-disable-introspection');
 
 const app = express();
 const port = process.env.PORT || 4000;
+const authenticateToken = require('./src/services/authentication');
 
 // Parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -39,6 +40,12 @@ app.get('/', (req, res) => {
     res.send("Music Life Resource Server");
 });
 app.use(`/api/explore`, graphqlHTTP({
+    schema: schema,
+    rootValue: root,
+    graphiql: true,
+    validationRules: [NoIntrospection]
+}));
+app.use(`/api/personal`, authenticateToken, graphqlHTTP({
     schema: schema,
     rootValue: root,
     graphiql: true,

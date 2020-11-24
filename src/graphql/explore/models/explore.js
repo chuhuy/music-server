@@ -57,9 +57,25 @@ class Explore {
         JOIN music_artist ma ON ma.music_id = m.music_id 
         JOIN artist a ON a.artist_id = ma.artist_id 
         WHERE mg.genre_id = ? GROUP BY m.music_id 
-        ORDER BY m.monthly_counter DESC LIMIT ?, ?;`;
+        ORDER BY m.release_date DESC LIMIT ?, ?;`;
         try {
             const result = await query(queryString, [genre_id, offset, first]);
+            return result;
+        } catch (error) {
+            console.log(error);
+            return [];
+        }
+    }
+    async getSongsByGenre(genre_id) {
+        const queryString = `SELECT m.music_id, m.title, m.release_date, m.url, m.image_url, m.lyric, 
+        GROUP_CONCAT(DISTINCT a.name SEPARATOR ', ') AS artists FROM music m 
+        JOIN music_genre mg ON m.music_id = mg.music_id 
+        JOIN music_artist ma ON ma.music_id = m.music_id 
+        JOIN artist a ON a.artist_id = ma.artist_id 
+        WHERE mg.genre_id = ? GROUP BY m.music_id 
+        ORDER BY m.total_counter DESC LIMIT 100;`;
+        try {
+            const result = await query(queryString, [genre_id]);
             return result;
         } catch (error) {
             console.log(error);
