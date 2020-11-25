@@ -82,6 +82,46 @@ class Explore {
             return [];
         }
     }
+    async getLatestAlbums(first, offset) {
+        const queryString = `SELECT * FROM album a
+        ORDER BY a.release_date DESC
+        LIMIT ?, ?;`
+        try {
+            const result = await query(queryString, [offset, first]);
+            return result;
+        } catch (error) {
+            console.log(error);
+            return [];
+        }
+    }
+    async getAlbumsByGenre(first, offset, genre_id) {
+        const queryString = `SELECT a.* FROM album a
+        JOIN album_genre ag ON a.album_id = ag.album_id
+        WHERE ag.genre_id = ?
+        ORDER BY a.album_id LIMIT ?, ?;`
+        try {
+            const result = await query(queryString, [genre_id, offset, first]);
+            return result;
+        } catch (error) {
+            console.log(error);
+            return [];
+        }
+    }
+    async getSongsByAlbum(album_id) {
+        const queryString = `SELECT m.music_id, m.title, m.release_date, m.url, m.image_url, m.lyric, 
+        GROUP_CONCAT(DISTINCT a.name SEPARATOR ', ') AS artists FROM music m
+        JOIN music_artist ma ON ma.music_id = m.music_id 
+        JOIN artist a ON a.artist_id = ma.artist_id 
+        WHERE m.album_id = ? GROUP BY m.music_id 
+        ORDER BY m.music_id DESC;`;
+        try {
+            const result = await query(queryString, [album_id]);
+            return result;
+        } catch (error) {
+            console.log(error);
+            return [];
+        }
+    }
 }
 
 module.exports = Explore;

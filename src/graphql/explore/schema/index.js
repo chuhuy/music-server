@@ -3,6 +3,7 @@ const enums = require('./enum');
 const songSchema = require('./song');
 const artistSchema = require('./artist');
 const genreSchema = require('./genre');
+const albumSchema = require('./album');
 
 const schema = buildSchema(`
     type Query {
@@ -10,13 +11,17 @@ const schema = buildSchema(`
         genres: [Genre]
         latestSongs(first: Int offset: Int): [Song]
         songsByGenre(first: Int offset: Int genre_id: Int): [Song]
+        albumsByGenre(first: Int offset: Int genre_id: Int): [Album]
         top100(genre_id: Int): [Song]
+        latestAlbums(first: Int offset: Int): [Album]
+        songsByAlbum(album_id: Int): [Song]
     }
 `.concat(
     enums,
     songSchema,
     artistSchema,
-    genreSchema
+    genreSchema,
+    albumSchema
 ));
 
 module.exports = schema;
