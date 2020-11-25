@@ -1,0 +1,648 @@
+{
+	"info": {
+		"_postman_id": "e2674740-41c2-4e9e-95b9-d311b6e34839",
+		"name": "MusicLife",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Resource",
+			"item": [
+				{
+					"name": "Music Chart",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\r\n    kpop: chart(area: KPOP) {\r\n        music_id\r\n        title\r\n        url\r\n        image_url\r\n        artists\r\n        lyric\r\n    }\r\n    vpop: chart(area: VPOP) {\r\n        music_id\r\n        title\r\n        url\r\n        image_url\r\n        artists\r\n        lyric\r\n    }\r\n    usuk: chart(area: USUK) {\r\n        music_id\r\n        title\r\n        url\r\n        image_url\r\n        artists\r\n        lyric\r\n    }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "https://music-life-resource.herokuapp.com/api/explore",
+							"protocol": "https",
+							"host": [
+								"music-life-resource",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"explore"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Top 100",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\r\n    top100(genre_id: 1) {\r\n        music_id\r\n        title\r\n        url\r\n        image_url\r\n        artists\r\n        lyric\r\n    }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "https://music-life-resource.herokuapp.com/api/explore",
+							"protocol": "https",
+							"host": [
+								"music-life-resource",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"explore"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Latest Songs",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\r\n    latestSongs(first: 5, offset: 0) {\r\n        music_id\r\n        title\r\n        url\r\n        image_url\r\n        artists\r\n        lyric\r\n    }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "https://music-life-resource.herokuapp.com/api/explore",
+							"protocol": "https",
+							"host": [
+								"music-life-resource",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"explore"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Latest Album",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\r\n    latestAlbums(first: 10 offset: 0) {\r\n        album_id\r\n        title\r\n        release_date\r\n        image_url\r\n        artists\r\n    }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "https://music-life-resource.herokuapp.com/api/explore",
+							"protocol": "https",
+							"host": [
+								"music-life-resource",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"explore"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Albums by Genre",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\r\n    albumsByGenre(first: 10 offset: 0 genre_id: 2) {\r\n        album_id\r\n        title\r\n        release_date\r\n        image_url\r\n        artists\r\n    }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "https://music-life-resource.herokuapp.com/api/explore",
+							"protocol": "https",
+							"host": [
+								"music-life-resource",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"explore"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Songs by Album",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\r\n    songsByAlbum (album_id: 1) {\r\n        music_id\r\n        title\r\n        url\r\n        image_url\r\n        artists\r\n        lyric\r\n    }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "https://music-life-resource.herokuapp.com/api/explore",
+							"protocol": "https",
+							"host": [
+								"music-life-resource",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"explore"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Genres",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\r\n    genres {\r\n      genre_id\r\n      name\r\n      image_url\r\n    }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "https://music-life-resource.herokuapp.com/api/explore",
+							"protocol": "https",
+							"host": [
+								"music-life-resource",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"explore"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Songs by Genre",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\r\n    songsByGenre (first: 5 offset: 0 genre_id: 1) {\r\n        music_id\r\n        title\r\n        url\r\n        image_url\r\n        artists\r\n        lyric\r\n    }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "https://music-life-resource.herokuapp.com/api/explore",
+							"protocol": "https",
+							"host": [
+								"music-life-resource",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"explore"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "Register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"test\",\r\n    \"password\": \"test1234\",\r\n    \"display_name\": \"Test Account\",\r\n    \"email\": \"test@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://music-life-auth.herokuapp.com/api/v1/user/register",
+									"protocol": "https",
+									"host": [
+										"music-life-auth",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Validate Mail",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://music-life-auth.herokuapp.com/api/v1/user/validate?email=huyct29@gmail.com",
+									"protocol": "https",
+									"host": [
+										"music-life-auth",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"validate"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": "huyct29@gmail.com"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Sign In",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"huyct29@gmail.com\",\r\n    \"password\": \"a9ae1277\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://music-life-auth.herokuapp.com/api/v1/user/signin",
+									"protocol": "https",
+									"host": [
+										"music-life-auth",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"signin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Token",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"chuhuy\",\r\n    \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDE5MDI1MzcsImV4cCI6MTYwMzExMjEzN30.QGhASMm-cXr1dsxDwJNU_YKbGpLcTZGR3ZbJHdLJ9Cs\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://music-life-auth.herokuapp.com/api/v1/user/token",
+									"protocol": "https",
+									"host": [
+										"music-life-auth",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Sign Out",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"chuhuy\",\r\n    \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDE5MDI1MzcsImV4cCI6MTYwMzExMjEzN30.QGhASMm-cXr1dsxDwJNU_YKbGpLcTZGR3ZbJHdLJ9Cs\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://music-life-auth.herokuapp.com/api/v1/user/signout",
+									"protocol": "https",
+									"host": [
+										"music-life-auth",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"signout"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Forgot password",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"huyct29@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://music-life-auth.herokuapp.com/api/v1/user/forgot",
+									"protocol": "https",
+									"host": [
+										"music-life-auth",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"forgot"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reset password",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://music-life-auth.herokuapp.com/api/v1/user/reset?s=$2b$12$2I4YRh7XCcCD6zlMiwYH2ecqTJ39OTL6zMPkm1N/7N8.19p6os9PK&e=huyct29@gmail.com&t=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzd29yZCI6ImEwZTEyYmYzIiwiaWF0IjoxNjAxOTE4NjgzLCJleHAiOjE2MDE5MjIyODN9.u8PzvdAsILSalT-d9wKRb25qXdpUg_oU8b0HlBheLSY",
+									"protocol": "https",
+									"host": [
+										"music-life-auth",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"reset"
+									],
+									"query": [
+										{
+											"key": "s",
+											"value": "$2b$12$2I4YRh7XCcCD6zlMiwYH2ecqTJ39OTL6zMPkm1N/7N8.19p6os9PK"
+										},
+										{
+											"key": "e",
+											"value": "huyct29@gmail.com"
+										},
+										{
+											"key": "t",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzd29yZCI6ImEwZTEyYmYzIiwiaWF0IjoxNjAxOTE4NjgzLCJleHAiOjE2MDE5MjIyODN9.u8PzvdAsILSalT-d9wKRb25qXdpUg_oU8b0HlBheLSY"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Sign In Facebook",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"access_token\": \"EAAFwXOMvpMoBANyZBhFPCFaH3XG42pqbVH8IqUpgZCfS2mMgbYhfEzWUDzywQlk26MWReKLn2owmSIZB27rQZCZAHaYORU1GpnL5ZAwgmoA3r9t07laQJyog4m7MYeSffI7HiNWf1EJqJf8iZBysM37HTEcoBWMzwtv9hAzE28kcfZClP4Rhalr0o1vfHMfiOlZAVs8hAm70vuDT1D9m6ztVu30cUhpZCYxV1MxwONbxsvq1D4M9LJNou5\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://music-life-auth.herokuapp.com/api/v1/user/signin-fb",
+									"protocol": "https",
+									"host": [
+										"music-life-auth",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"signin-fb"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "API for user\r\n",
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "Register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"khoihoa97\",\r\n    \"password\": \"1234\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://music-life-auth.herokuapp.com/api/v1/admin/register",
+									"protocol": "https",
+									"host": [
+										"music-life-auth",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"admin",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Sign In",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"chuhuy\",\r\n    \"password\": \"huychu2911\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://music-life-auth.herokuapp.com/api/v1/admin/signin",
+									"protocol": "https",
+									"host": [
+										"music-life-auth",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"admin",
+										"signin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Token",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"chuhuy\",\r\n    \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiY2h1aHV5IiwiaWF0IjoxNjAxODY1NzExLCJleHAiOjE2MDMwNzUzMTF9.lbDYsMPjOAPJU6mpOI7GcbzRZqMKi-VjDWkH-k7jlPg\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://music-life-auth.herokuapp.com/api/v1/admin/token",
+									"protocol": "https",
+									"host": [
+										"music-life-auth",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"admin",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Sign Out",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"chuhuy\",\r\n    \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiY2h1aHV5IiwiaWF0IjoxNjAxODY1NzExLCJleHAiOjE2MDMwNzUzMTF9.lbDYsMPjOAPJU6mpOI7GcbzRZqMKi-VjDWkH-k7jlPg\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://music-life-auth.herokuapp.com/api/v1/admin/signout",
+									"protocol": "https",
+									"host": [
+										"music-life-auth",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"admin",
+										"signout"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "API for admin",
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
