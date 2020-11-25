@@ -51,7 +51,7 @@ app.use(`/api/explore`, graphqlHTTP({
 }));
 app.use(`/api/personal`, authenticateToken, graphqlHTTP({
     schema: personalSchema,
-    rootValue: personalSchema,
+    rootValue: personalRoot,
     graphiql: true,
     validationRules: [NoIntrospection]
 }));

@@ -4,6 +4,7 @@ const albumSchema = `
         title: String!
         release_date: String
         image_url: String
+        artists: String
     }
 `;
 

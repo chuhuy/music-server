@@ -83,8 +83,13 @@ class Explore {
         }
     }
     async getLatestAlbums(first, offset) {
-        const queryString = `SELECT * FROM album a
-        ORDER BY a.release_date DESC
+        const queryString = `SELECT a1.*,
+        GROUP_CONCAT(DISTINCT a2.name SEPARATOR ', ') AS artists
+        FROM album a1
+        JOIN album_artist aa ON a1.album_id = aa.album_id
+        JOIN artist a2 ON a2.artist_id = aa.artist_id
+        GROUP BY a1.album_id
+        ORDER BY a1.release_date DESC
         LIMIT ?, ?;`
         try {
             const result = await query(queryString, [offset, first]);
@@ -95,10 +100,16 @@ class Explore {
         }
     }
     async getAlbumsByGenre(first, offset, genre_id) {
-        const queryString = `SELECT a.* FROM album a
-        JOIN album_genre ag ON a.album_id = ag.album_id
+        const queryString = `SELECT a1.*,
+        GROUP_CONCAT(DISTINCT a2.name SEPARATOR ', ') AS artists
+        FROM album a1
+        JOIN album_artist aa ON a1.album_id = aa.album_id
+        JOIN artist a2 ON a2.artist_id = aa.artist_id
+        JOIN album_genre ag ON ag.album_id = a1.album_id
         WHERE ag.genre_id = ?
-        ORDER BY a.album_id LIMIT ?, ?;`
+        GROUP BY a1.album_id
+        ORDER BY a1.album_id
+        LIMIT ?, ?;`
         try {
             const result = await query(queryString, [genre_id, offset, first]);
             return result;
