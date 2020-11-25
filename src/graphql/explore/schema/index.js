@@ -15,6 +15,8 @@ const schema = buildSchema(`
         top100(genre_id: Int): [Song]
         latestAlbums(first: Int offset: Int): [Album]
         songsByAlbum(album_id: Int): [Song]
+        searchBySong(first: Int offset: Int keyword: String): [Song]
+        searchByArtist(first: Int offset: Int keyword: String): [Artist]
     }
 `.concat(
     enums,

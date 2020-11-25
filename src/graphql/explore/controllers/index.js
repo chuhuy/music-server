@@ -6,6 +6,9 @@ const songsByGenreController = require('./songsByGenre');
 const top100Controller = require('./top100');
 const albumsByGenreController = require('./albumsByGenre');
 const songsByAlbumController = require('./songsByAlbum');
+const searchBySongController = require('./searchBySong');
+const searchByArtistController = require('./searchByArtist');
+
 
 const root = {
     chart: chartController,
@@ -16,6 +19,8 @@ const root = {
     latestAlbums: latestAlbumsController,
     albumsByGenre: albumsByGenreController,
     songsByAlbum: songsByAlbumController,
+    searchBySong: searchBySongController,
+    searchByArtist: searchByArtistController
 };
 
 module.exports = root;

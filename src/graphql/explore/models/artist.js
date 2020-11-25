@@ -1,10 +1,22 @@
 const connection = require('./../../../database/connect');
+const util = require('util');
+
+const query = util.promisify(connection.query).bind(connection);
 
 class Artist {
-    constructor (artist_id, name, description, image_url) {
-        this.artist_id = artist_id;
-        this.name = name;
-        this.description = description;
-        this.image_url = image_url;
+    async searchByArtistName (first, offset, keyword) {
+        const queryString = `SELECT * FROM artist a
+        WHERE a.name LIKE ?
+        ORDER BY a.artist_id
+        LIMIT ?, ?;`;
+        try {
+            const result = await query(queryString, [`%${keyword}%`, offset, first]);
+            return result;
+        } catch (error) {
+            console.log(error);
+            return [];
+        }
     }
 }
+
+module.exports = Artist;
