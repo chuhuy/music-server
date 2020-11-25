@@ -49,12 +49,20 @@ app.use(`/api/explore`, graphqlHTTP({
     graphiql: true,
     validationRules: [NoIntrospection]
 }));
-app.use(`/api/personal`, authenticateToken, graphqlHTTP({
+// app.use(`/api/personal`, authenticateToken, graphqlHTTP({
+//     schema: personalSchema,
+//     rootValue: personalRoot,
+//     graphiql: true,
+//     validationRules: [NoIntrospection]
+// }));
+app.use('/api/personal', [authenticateToken, bodyParser.json()], (req, res) => graphqlHTTP({
     schema: personalSchema,
     rootValue: personalRoot,
+    context: req,
     graphiql: true,
     validationRules: [NoIntrospection]
-}));
+})(req, res));
+
 
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`);

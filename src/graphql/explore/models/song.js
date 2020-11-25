@@ -22,6 +22,18 @@ class Song {
             return [];
         }
     }
+    async getComments (first, offset, music_id) {
+        const queryString = `SELECT c.comment_id, c.content, c.created_at 
+        FROM comment c WHERE c.music_id = ?
+        ORDER BY c.created_at DESC LIMIT ?, ?;`;
+        try {
+            const result = await query(queryString, [music_id, offset, first]);
+            return result;
+        } catch (error) {
+            console.log(error);
+            return [];
+        }
+    }
 }
 
 module.exports = Song;

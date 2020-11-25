@@ -4,6 +4,7 @@ const songSchema = require('./song');
 const artistSchema = require('./artist');
 const genreSchema = require('./genre');
 const albumSchema = require('./album');
+const commentSchema = require('./comment');
 
 const schema = buildSchema(`
     type Query {
@@ -18,13 +19,15 @@ const schema = buildSchema(`
         searchBySong(first: Int offset: Int keyword: String): [Song]
         searchByArtist(first: Int offset: Int keyword: String): [Artist]
         searchByAlbum(first: Int offset: Int keyword: String): [Album]
+        getComments(first: Int offset: Int music_id: Int): [Comment]
     }
 `.concat(
     enums,
     songSchema,
     artistSchema,
     genreSchema,
-    albumSchema
+    albumSchema,
+    commentSchema
 ));
 
 module.exports = schema;

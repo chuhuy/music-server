@@ -9,6 +9,7 @@ const songsByAlbumController = require('./songsByAlbum');
 const searchBySongController = require('./searchBySong');
 const searchByArtistController = require('./searchByArtist');
 const searchByAlbumController = require('./searchByAlbum');
+const getCommentController = require('./getComments');
 
 
 const root = {
@@ -22,7 +23,8 @@ const root = {
     songsByAlbum: songsByAlbumController,
     searchBySong: searchBySongController,
     searchByArtist: searchByArtistController,
-    searchByAlbum: searchByAlbumController
+    searchByAlbum: searchByAlbumController,
+    getComments: getCommentController
 };
 
 module.exports = root;
