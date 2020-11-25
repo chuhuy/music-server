@@ -9,7 +9,7 @@ const songsByAlbumController = require('./songsByAlbum');
 
 const root = {
     chart: chartController,
-    genre: genreController,
+    genres: genreController,
     latestSongs: latestSongsController,
     songsByGenre: songsByGenreController,
     top100: top100Controller,

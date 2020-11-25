@@ -3,7 +3,6 @@ const genreSchema = `
         genre_id: Int!
         name: String!
         image_url: String
-        songs: [Song]
     }
 `;
 
