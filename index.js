@@ -6,13 +6,17 @@ const helmet = require('helmet');
 const dotenv = require('dotenv').config();
 const bodyParser = require('body-parser');
 const { graphqlHTTP } = require('express-graphql');
-const schema = require('./src/graphql/explore/schema');
-const root = require('./src/graphql/explore/controllers');
 const NoIntrospection = require('graphql-disable-introspection');
 
 const app = express();
 const port = process.env.PORT || 4000;
 const authenticateToken = require('./src/services/authentication');
+
+// GraphQL root and schema
+const exploreSchema = require('./src/graphql/explore/schema');
+const exploreRoot = require('./src/graphql/explore/controllers');
+const personalSchema = require('./src/graphql/personal/schema');
+const personalRoot = require('./src/graphql/personal/controllers');
 
 // Parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -40,14 +44,14 @@ app.get('/', (req, res) => {
     res.send("Music Life Resource Server");
 });
 app.use(`/api/explore`, graphqlHTTP({
-    schema: schema,
-    rootValue: root,
+    schema: exploreSchema,
+    rootValue: exploreRoot,
     graphiql: true,
     validationRules: [NoIntrospection]
 }));
 app.use(`/api/personal`, authenticateToken, graphqlHTTP({
-    schema: schema,
-    rootValue: root,
+    schema: personalSchema,
+    rootValue: personalSchema,
     graphiql: true,
     validationRules: [NoIntrospection]
 }));
