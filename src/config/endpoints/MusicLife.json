@@ -9,228 +9,503 @@
 			"name": "Resource",
 			"item": [
 				{
-					"name": "Music Chart",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "graphql",
-							"graphql": {
-								"query": "query {\r\n    kpop: chart(area: KPOP) {\r\n        music_id\r\n        title\r\n        url\r\n        image_url\r\n        artists\r\n        lyric\r\n    }\r\n    vpop: chart(area: VPOP) {\r\n        music_id\r\n        title\r\n        url\r\n        image_url\r\n        artists\r\n        lyric\r\n    }\r\n    usuk: chart(area: USUK) {\r\n        music_id\r\n        title\r\n        url\r\n        image_url\r\n        artists\r\n        lyric\r\n    }\r\n}",
-								"variables": ""
-							}
+					"name": "Explore",
+					"item": [
+						{
+							"name": "Music Chart",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query {\r\n    kpop: chart(area: KPOP) {\r\n        music_id\r\n        title\r\n        url\r\n        image_url\r\n        artists\r\n        lyric\r\n    }\r\n    vpop: chart(area: VPOP) {\r\n        music_id\r\n        title\r\n        url\r\n        image_url\r\n        artists\r\n        lyric\r\n    }\r\n    usuk: chart(area: USUK) {\r\n        music_id\r\n        title\r\n        url\r\n        image_url\r\n        artists\r\n        lyric\r\n    }\r\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "https://music-life-resource.herokuapp.com/api/explore",
+									"protocol": "https",
+									"host": [
+										"music-life-resource",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"explore"
+									]
+								}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "https://music-life-resource.herokuapp.com/api/explore",
-							"protocol": "https",
-							"host": [
-								"music-life-resource",
-								"herokuapp",
-								"com"
-							],
-							"path": [
-								"api",
-								"explore"
-							]
+						{
+							"name": "Top 100",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query {\r\n    top100(genre_id: 1) {\r\n        music_id\r\n        title\r\n        url\r\n        image_url\r\n        artists\r\n        lyric\r\n    }\r\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "https://music-life-resource.herokuapp.com/api/explore",
+									"protocol": "https",
+									"host": [
+										"music-life-resource",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"explore"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Latest Songs",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query {\r\n    latestSongs(first: 5, offset: 0) {\r\n        music_id\r\n        title\r\n        url\r\n        image_url\r\n        artists\r\n        lyric\r\n    }\r\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "https://music-life-resource.herokuapp.com/api/explore",
+									"protocol": "https",
+									"host": [
+										"music-life-resource",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"explore"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Latest Album",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query {\r\n    latestAlbums(first: 10 offset: 0) {\r\n        album_id\r\n        title\r\n        release_date\r\n        image_url\r\n        artists\r\n    }\r\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "https://music-life-resource.herokuapp.com/api/explore",
+									"protocol": "https",
+									"host": [
+										"music-life-resource",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"explore"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Albums by Genre",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query {\r\n    albumsByGenre(first: 10 offset: 0 genre_id: 2) {\r\n        album_id\r\n        title\r\n        release_date\r\n        image_url\r\n        artists\r\n    }\r\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "https://music-life-resource.herokuapp.com/api/explore",
+									"protocol": "https",
+									"host": [
+										"music-life-resource",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"explore"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Songs by Album",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query {\r\n    songsByAlbum (album_id: 1) {\r\n        music_id\r\n        title\r\n        url\r\n        image_url\r\n        artists\r\n        lyric\r\n    }\r\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "https://music-life-resource.herokuapp.com/api/explore",
+									"protocol": "https",
+									"host": [
+										"music-life-resource",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"explore"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Genres",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query {\r\n    genres {\r\n      genre_id\r\n      name\r\n      image_url\r\n    }\r\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "https://music-life-resource.herokuapp.com/api/explore",
+									"protocol": "https",
+									"host": [
+										"music-life-resource",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"explore"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Songs by Genre",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query {\r\n    songsByGenre (first: 5 offset: 0 genre_id: 1) {\r\n        music_id\r\n        title\r\n        url\r\n        image_url\r\n        artists\r\n        lyric\r\n    }\r\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "https://music-life-resource.herokuapp.com/api/explore",
+									"protocol": "https",
+									"host": [
+										"music-life-resource",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"explore"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Search by Song",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query {\r\n    searchBySong(keyword: \"ice\") {\r\n        music_id\r\n        title\r\n        url\r\n        image_url\r\n        artists\r\n        lyric\r\n\t}\r\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "https://music-life-resource.herokuapp.com/api/explore",
+									"protocol": "https",
+									"host": [
+										"music-life-resource",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"explore"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Search by Artist",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query {\r\n    searchByArtist(keyword: \"pink\") {\r\n        artist_id\r\n        name\r\n        description\r\n        image_url\r\n    }\r\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "https://music-life-resource.herokuapp.com/api/explore",
+									"protocol": "https",
+									"host": [
+										"music-life-resource",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"explore"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Search by Album",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query {\r\n    searchByAlbum(keyword: \"kill\") {\r\n        album_id\r\n        title\r\n        release_date\r\n        image_url\r\n        artists\r\n    }\r\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "https://music-life-resource.herokuapp.com/api/explore",
+									"protocol": "https",
+									"host": [
+										"music-life-resource",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"explore"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
 				},
 				{
-					"name": "Top 100",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "graphql",
-							"graphql": {
-								"query": "query {\r\n    top100(genre_id: 1) {\r\n        music_id\r\n        title\r\n        url\r\n        image_url\r\n        artists\r\n        lyric\r\n    }\r\n}",
-								"variables": ""
-							}
+					"name": "Personal",
+					"item": [
+						{
+							"name": "Comment Song",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiaHV5Y2h1MjkiLCJpYXQiOjE2MDYzNTczNTAsImV4cCI6MTYwNjQwMDU1MH0.xXVxcX-_PIKzZqe-KDeCPJtScaOTZsR9a-wo1JNA9Uw",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "mutation {\r\n    commentSong(content: \"Wonderful song ^^!\" music_id: 2)\r\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "https://music-life-resource.herokuapp.com/api/personal",
+									"protocol": "https",
+									"host": [
+										"music-life-resource",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"personal"
+									]
+								}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "https://music-life-resource.herokuapp.com/api/explore",
-							"protocol": "https",
-							"host": [
-								"music-life-resource",
-								"herokuapp",
-								"com"
-							],
-							"path": [
-								"api",
-								"explore"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Latest Songs",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "graphql",
-							"graphql": {
-								"query": "query {\r\n    latestSongs(first: 5, offset: 0) {\r\n        music_id\r\n        title\r\n        url\r\n        image_url\r\n        artists\r\n        lyric\r\n    }\r\n}",
-								"variables": ""
-							}
+						{
+							"name": "Add Favorite Song",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiaHV5Y2h1MjkiLCJpYXQiOjE2MDYzNTczNTAsImV4cCI6MTYwNjQwMDU1MH0.xXVxcX-_PIKzZqe-KDeCPJtScaOTZsR9a-wo1JNA9Uw",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "mutation {\r\n    addFavoriteSong(music_id: 1)\r\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "https://music-life-resource.herokuapp.com/api/personal",
+									"protocol": "https",
+									"host": [
+										"music-life-resource",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"personal"
+									]
+								}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "https://music-life-resource.herokuapp.com/api/explore",
-							"protocol": "https",
-							"host": [
-								"music-life-resource",
-								"herokuapp",
-								"com"
-							],
-							"path": [
-								"api",
-								"explore"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Latest Album",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "graphql",
-							"graphql": {
-								"query": "query {\r\n    latestAlbums(first: 10 offset: 0) {\r\n        album_id\r\n        title\r\n        release_date\r\n        image_url\r\n        artists\r\n    }\r\n}",
-								"variables": ""
-							}
+						{
+							"name": "Get Favorite Song",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiaHV5Y2h1MjkiLCJpYXQiOjE2MDYzNTczNTAsImV4cCI6MTYwNjQwMDU1MH0.xXVxcX-_PIKzZqe-KDeCPJtScaOTZsR9a-wo1JNA9Uw",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query {\r\n    getFavoriteSong {\r\n        music_id\r\n        title\r\n        url\r\n        image_url\r\n        artists\r\n    }\r\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "https://music-life-resource.herokuapp.com/api/personal",
+									"protocol": "https",
+									"host": [
+										"music-life-resource",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"personal"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "https://music-life-resource.herokuapp.com/api/explore",
-							"protocol": "https",
-							"host": [
-								"music-life-resource",
-								"herokuapp",
-								"com"
-							],
-							"path": [
-								"api",
-								"explore"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Albums by Genre",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "graphql",
-							"graphql": {
-								"query": "query {\r\n    albumsByGenre(first: 10 offset: 0 genre_id: 2) {\r\n        album_id\r\n        title\r\n        release_date\r\n        image_url\r\n        artists\r\n    }\r\n}",
-								"variables": ""
-							}
+						{
+							"name": "Create Playlist",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiaHV5Y2h1MjkiLCJpYXQiOjE2MDYzNTczNTAsImV4cCI6MTYwNjQwMDU1MH0.xXVxcX-_PIKzZqe-KDeCPJtScaOTZsR9a-wo1JNA9Uw",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "mutation {\r\n    createPlaylist(playlist_name: \"My playlist\")\r\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "https://music-life-resource.herokuapp.com/api/personal",
+									"protocol": "https",
+									"host": [
+										"music-life-resource",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"personal"
+									]
+								}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "https://music-life-resource.herokuapp.com/api/explore",
-							"protocol": "https",
-							"host": [
-								"music-life-resource",
-								"herokuapp",
-								"com"
-							],
-							"path": [
-								"api",
-								"explore"
-							]
+						{
+							"name": "Get Playlist",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiaHV5Y2h1MjkiLCJpYXQiOjE2MDYzNTczNTAsImV4cCI6MTYwNjQwMDU1MH0.xXVxcX-_PIKzZqe-KDeCPJtScaOTZsR9a-wo1JNA9Uw",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query {\r\n    getPlaylist(first: 0 offset: 0) {\r\n        playlist_id\r\n        name\r\n        image_url\r\n    }\r\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "https://music-life-resource.herokuapp.com/api/personal",
+									"protocol": "https",
+									"host": [
+										"music-life-resource",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"personal"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
-				},
-				{
-					"name": "Songs by Album",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "graphql",
-							"graphql": {
-								"query": "query {\r\n    songsByAlbum (album_id: 1) {\r\n        music_id\r\n        title\r\n        url\r\n        image_url\r\n        artists\r\n        lyric\r\n    }\r\n}",
-								"variables": ""
-							}
-						},
-						"url": {
-							"raw": "https://music-life-resource.herokuapp.com/api/explore",
-							"protocol": "https",
-							"host": [
-								"music-life-resource",
-								"herokuapp",
-								"com"
-							],
-							"path": [
-								"api",
-								"explore"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Genres",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "graphql",
-							"graphql": {
-								"query": "query {\r\n    genres {\r\n      genre_id\r\n      name\r\n      image_url\r\n    }\r\n}",
-								"variables": ""
-							}
-						},
-						"url": {
-							"raw": "https://music-life-resource.herokuapp.com/api/explore",
-							"protocol": "https",
-							"host": [
-								"music-life-resource",
-								"herokuapp",
-								"com"
-							],
-							"path": [
-								"api",
-								"explore"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Songs by Genre",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "graphql",
-							"graphql": {
-								"query": "query {\r\n    songsByGenre (first: 5 offset: 0 genre_id: 1) {\r\n        music_id\r\n        title\r\n        url\r\n        image_url\r\n        artists\r\n        lyric\r\n    }\r\n}",
-								"variables": ""
-							}
-						},
-						"url": {
-							"raw": "https://music-life-resource.herokuapp.com/api/explore",
-							"protocol": "https",
-							"host": [
-								"music-life-resource",
-								"herokuapp",
-								"com"
-							],
-							"path": [
-								"api",
-								"explore"
-							]
-						}
-					},
-					"response": []
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -309,7 +584,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"email\": \"huyct29@gmail.com\",\r\n    \"password\": \"a9ae1277\"\r\n}",
+									"raw": "{\r\n    \"email\": \"huyct29@gmail.com\",\r\n    \"password\": \"Huychu2911\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
