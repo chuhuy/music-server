@@ -21,11 +21,11 @@ class Explore {
         }
     }
 
-    async getGenres() {
+    async getGenres(first, offset) {
         const queryString = `SELECT g.genre_id, g.name, g.image_url
-                             FROM genre g;`;
+                             FROM genre g LIMIT ?, ?;`;
         try {
-            const result = await query(queryString);
+            const result = await query(queryString, [offset, first]);
             return result;
         } catch (error) {
             console.log(error);

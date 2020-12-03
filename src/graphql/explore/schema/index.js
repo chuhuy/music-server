@@ -9,7 +9,7 @@ const commentSchema = require('./comment');
 const schema = buildSchema(`
     type Query {
         chart(area: Area): [Song]
-        genres: [Genre]
+        genres(first: Int offset: Int): [Genre]
         latestSongs(first: Int offset: Int): [Song]
         songsByGenre(first: Int offset: Int genre_id: Int): [Song]
         albumsByGenre(first: Int offset: Int genre_id: Int): [Album]
