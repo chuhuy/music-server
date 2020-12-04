@@ -23,9 +23,10 @@ class Song {
         }
     }
     async getComments (first, offset, music_id) {
-        const queryString = `SELECT c.comment_id, c.content, c.created_at 
-        FROM comment c WHERE c.music_id = ?
-        ORDER BY c.created_at DESC LIMIT ?, ?;`;
+        const queryString = `SELECT c.comment_id, c.content, c.created_at, u.display_name, u.image_url, u.default_avatar 
+                             FROM comment c JOIN user u ON c.uuid = u.uuid
+                             WHERE c.music_id = ?
+                             ORDER BY c.created_at DESC LIMIT ?, ?;`;
         try {
             const result = await query(queryString, [music_id, offset, first]);
             return result;

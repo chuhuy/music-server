@@ -4,7 +4,8 @@ const getCommentsController = (args) => {
     const song = new Song();
     let first = args.first || parseInt(process.env.DEFAULT_PAGINATION_ITEMS);
     let offset = args.offset || 0;
-    return song.getComments(first, offset, music_id);
+    if(args.music_id) return song.getComments(first, offset, args.music_id);
+    else return [];
 }
 
 module.exports = getCommentsController;

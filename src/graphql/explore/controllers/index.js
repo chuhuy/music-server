@@ -9,7 +9,7 @@ const songsByAlbumController = require('./songsByAlbum');
 const searchBySongController = require('./searchBySong');
 const searchByArtistController = require('./searchByArtist');
 const searchByAlbumController = require('./searchByAlbum');
-const getCommentController = require('./getComments');
+const getCommentsController = require('./getComments');
 const getArtistByIDController = require('./getArtistByID');
 const songCounterController = require('./songCounter');
 
@@ -25,7 +25,7 @@ const root = {
     searchBySong: searchBySongController,
     searchByArtist: searchByArtistController,
     searchByAlbum: searchByAlbumController,
-    getComments: getCommentController,
+    getComments: getCommentsController,
     getArtistByID: getArtistByIDController,
     songCounter: songCounterController,
 };
