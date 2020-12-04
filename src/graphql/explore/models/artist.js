@@ -17,6 +17,17 @@ class Artist {
             return [];
         }
     }
+
+    async getArtistByID (artist_id) {
+        const queryString = `SELECT * FROM artist a WHERE a.artist_id = ?`;
+        try {
+            const result = await query(queryString, [artist_id]);
+            return result[0];
+        } catch (error) {
+            console.log(error);
+            return {};
+        }
+    }
 }
 
 module.exports = Artist;

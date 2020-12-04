@@ -32,10 +32,11 @@ class Playlist {
         const queryString = ``;
         try {
             const result = await query(queryString, []);
-            return result;
+            if(result.affectedRows) return 1;
+            else return 0;
         } catch (error) {
             console.log(error);
-            return [];
+            return 0;
         }
     }
 }

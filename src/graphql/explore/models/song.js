@@ -34,6 +34,21 @@ class Song {
             return [];
         }
     }
+
+    async songCounter (music_id) {
+        const queryString = `UPDATE music m
+                             SET m.monthly_counter = m.monthly_counter + 1,
+                             m.total_counter = m.total_counter + 1
+                             WHERE m.music_id = ?;`;
+        try {
+            const result = await query(queryString, [music_id]);
+            if(result.changedRows) return 1;
+            else return 0;
+        } catch (error) {
+            console.log(error);
+            return 0;
+        }
+    }
 }
 
 module.exports = Song;

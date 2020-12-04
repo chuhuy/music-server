@@ -50,7 +50,7 @@ class Explore {
             return [];
         }
     }
-    async getSongsByGenre(first, offset, genre_id) {
+    async getSongsByGenreID(first, offset, genre_id) {
         const queryString = `SELECT m.music_id, m.title, m.release_date, m.url, m.image_url, m.lyric, 
         GROUP_CONCAT(DISTINCT a.name SEPARATOR ', ') AS artists FROM music m 
         JOIN music_genre mg ON m.music_id = mg.music_id 
@@ -60,6 +60,7 @@ class Explore {
         ORDER BY m.release_date DESC LIMIT ?, ?;`;
         try {
             const result = await query(queryString, [genre_id, offset, first]);
+            console.log(result)
             return result;
         } catch (error) {
             console.log(error);

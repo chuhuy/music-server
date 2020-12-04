@@ -20,6 +20,10 @@ const schema = buildSchema(`
         searchByArtist(first: Int offset: Int keyword: String): [Artist]
         searchByAlbum(first: Int offset: Int keyword: String): [Album]
         getComments(first: Int offset: Int music_id: Int): [Comment]
+        getArtistByID(artist_id: Int): Artist
+    }
+    type Mutation {
+        songCounter(music_id: Int): Int
     }
 `.concat(
     enums,
