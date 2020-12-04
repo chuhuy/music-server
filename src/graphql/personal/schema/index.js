@@ -8,13 +8,17 @@ const schema = buildSchema(`
     type Query {
         hello: String
         getFavoriteSong(first: Int offset: Int): [Song]
+        getFavoriteAlbum(first: Int offset: Int): [Album]
         getPlaylist(first: Int offset: Int): [Playlist]
+        getSongByPlaylist(first: Int offset: Int playlist_id: Int): [Song]
     }
 
     type Mutation {
         commentSong(music_id: Int content: String): Int
         addFavoriteSong(music_id: Int): Int
+        addFavoriteAlbum(album_id: Int): Int
         createPlaylist(playlist_name: String): Int
+        addSongToPlaylist(music_id: Int playlist_id: Int): Int
     }
 `.concat(
     albumSchema,

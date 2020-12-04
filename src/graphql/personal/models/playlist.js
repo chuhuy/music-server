@@ -28,15 +28,32 @@ class Playlist {
             return [];
         }
     }
-    async addSongToPlaylist(username, music_id, playlist_id) {
-        const queryString = ``;
+    async addSongToPlaylist(music_id, playlist_id) {
+        const queryString = `INSERT INTO playlist_music
+                             VALUES (?, ?)`;
         try {
-            const result = await query(queryString, []);
+            const result = await query(queryString, [playlist_id, music_id]);
             if(result.affectedRows) return 1;
             else return 0;
         } catch (error) {
             console.log(error);
             return 0;
+        }
+    }
+    async getSongByPlaylist(offset, first, playlist_id) {
+        const queryString = `SELECT m.music_id, m.title, m.release_date, m.url, m.image_url, m.lyric,
+                             GROUP_CONCAT(DISTINCT a.name SEPARATOR ', ') AS artists 
+                             FROM music m JOIN music_artist ma ON ma.music_id = m.music_id 
+                             JOIN artist a ON a.artist_id = ma.artist_id
+                             JOIN playlist_music pm ON pm.music_id = m.music_id
+                             WHERE pm.playlist_id = ? GROUP BY m.music_id
+                             ORDER BY m.music_id LIMIT ?, ?;`;
+        try {
+            const result = await query(queryString, [playlist_id, offset, first]);
+            return result;
+        } catch (error) {
+            console.log(error);
+            return [];
         }
     }
 }
