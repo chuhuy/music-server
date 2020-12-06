@@ -21,6 +21,7 @@ const schema = buildSchema(`
         searchByAlbum(first: Int offset: Int keyword: String): [Album]
         getComments(first: Int offset: Int music_id: Int): [Comment]
         getArtistByID(artist_id: Int): Artist
+        top100List(first: Int offset: Int): [Genre]
     }
     type Mutation {
         songCounter(music_id: Int): Int

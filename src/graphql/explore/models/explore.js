@@ -134,6 +134,17 @@ class Explore {
             return [];
         }
     }
+    async getTop100List(first, offset) {
+        const queryString = `SELECT g.genre_id, g.name, g.top_image AS image_url FROM genre g
+                             WHERE g.top_image IS NOT NULL ORDER BY g.genre_id LIMIT ?, ?;`;
+        try {
+            const result = await query(queryString, [offset, first]);
+            return result;
+        } catch (error) {
+            console.log(error);
+            return [];
+        }
+    }
 }
 
 module.exports = Explore;
