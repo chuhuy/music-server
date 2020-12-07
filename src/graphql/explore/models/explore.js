@@ -1,10 +1,10 @@
 const connection = require("../../../database/connect");
 const util = require("util");
-const redis = require("redis");
-const PORT_REDIS = process.env.PORT || 6379;
-const client = redis.createClient(PORT_REDIS);
+// const redis = require("redis");
+// const PORT_REDIS = process.env.PORT || 6379;
+// const client = redis.createClient(PORT_REDIS);
 const query = util.promisify(connection.query).bind(connection);
-const redisGet = util.promisify(client.get).bind(client);
+// const redisGet = util.promisify(client.get).bind(client);
 
 class Explore {
   async getChart(area_id) {
