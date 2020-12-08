@@ -7,6 +7,8 @@ const dotenv = require('dotenv').config();
 const bodyParser = require('body-parser');
 const { graphqlHTTP } = require('express-graphql');
 const NoIntrospection = require('graphql-disable-introspection');
+const CronJob = require('cron').CronJob;
+const resetWeeklyCounter = require('./src/graphql/explore/controllers/resetWeeklyCounter');
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -57,6 +59,16 @@ app.use('/api/personal', [authenticateToken, bodyParser.json()], (req, res) => g
     validationRules: [NoIntrospection]
 })(req, res));
 
+// Cronjob
+var job = new CronJob(
+	'00 00 00 * * 1',
+	function() {
+        resetWeeklyCounter();
+    },
+	null,
+	true,
+	'Asia/Ho_Chi_Minh'
+);
 
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`);

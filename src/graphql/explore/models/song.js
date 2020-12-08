@@ -50,6 +50,18 @@ class Song {
             return 0;
         }
     }
+    async resetWeeklyCounter () {
+        const queryString = `UPDATE music m
+        SET m.monthly_counter = 0;`;
+        try {
+            const result = await query(queryString);
+            if(result.changedRows) return 1;
+            else return 0;
+        } catch (error) {
+            console.log(error);
+            return 0;
+        }
+    }
 }
 
 module.exports = Song;
