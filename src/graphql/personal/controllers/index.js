@@ -7,6 +7,8 @@ const addFavoriteAlbumController = require('./addFavoriteAlbum');
 const getFavoriteAlbumController = require('./getFavoriteAlbum');
 const addSongToPlaylistController = require('./addSongToPlaylist');
 const getSongByPlaylistController = require('./getSongByPlaylist');
+const isFavoriteSongController = require('./isFavoriteSong');
+const isFavoriteAlbumController = require('./isFavoriteAlbum');
 
 const root = {
     commentSong: commentSongController,
@@ -18,6 +20,8 @@ const root = {
     getFavoriteAlbum: getFavoriteAlbumController,
     addSongToPlaylist: addSongToPlaylistController,
     getSongByPlaylist: getSongByPlaylistController,
+    isFavoriteSong: isFavoriteSongController,
+    isFavoriteAlbum: isFavoriteAlbumController,
 };
 
 module.exports = root;

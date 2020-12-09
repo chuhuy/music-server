@@ -11,6 +11,8 @@ const schema = buildSchema(`
         getFavoriteAlbum(first: Int offset: Int): [Album]
         getPlaylist(first: Int offset: Int): [Playlist]
         getSongByPlaylist(first: Int offset: Int playlist_id: Int): [Song]
+        isFavoriteSong(music_id: Int): Boolean
+        isFavoriteAlbum(album_id: Int): Boolean
     }
 
     type Mutation {

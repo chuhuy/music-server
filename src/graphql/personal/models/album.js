@@ -29,6 +29,18 @@ class Album {
             return [];
         }
     }
+    async isFavoriteAlbum(username, album_id) {
+        const queryString = `SELECT COUNT(*) AS exist FROM user_album ua
+                             JOIN user u ON u.uuid = ua.uuid
+                             WHERE u.username = ? AND ua.album_id = ?;`;
+        try {
+            const result = await query(queryString, [username, album_id])
+            return (!!result[0].exist);
+        } catch (error) {
+            console.log(error);
+            return false;
+        }
+    }
 }
 
 module.exports = Album;

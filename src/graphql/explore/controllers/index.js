@@ -13,6 +13,8 @@ const getCommentsController = require('./getComments');
 const getArtistByIDController = require('./getArtistByID');
 const songCounterController = require('./songCounter');
 const top100ListController = require('./top100List');
+const songsByArtistController = require('./songsByArtist');
+const albumsByArtistController = require('./albumsByArtist');
 
 const root = {
     chart: chartController,
@@ -30,6 +32,8 @@ const root = {
     getArtistByID: getArtistByIDController,
     songCounter: songCounterController,
     top100List: top100ListController,
+    songsByArtist: songsByArtistController,
+    albumsByArtist: albumsByArtistController,
 };
 
 module.exports = root;

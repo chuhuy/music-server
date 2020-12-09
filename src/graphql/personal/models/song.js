@@ -44,6 +44,18 @@ class Song {
             return [];
         }
     }
+    async isFavoriteSong(username, music_id) {
+        const queryString = `SELECT COUNT(*) AS exist FROM user_music um
+                             JOIN user u ON u.uuid = um.uuid
+                             WHERE u.username = ? AND um.music_id = ?;`;
+        try {
+            const result = await query(queryString, [username, music_id])
+            return (!!result[0].exist);
+        } catch (error) {
+            console.log(error);
+            return false;
+        }
+    }
 }
 
 module.exports = Song;
