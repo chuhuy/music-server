@@ -26,7 +26,7 @@ class Song {
         const queryString = `SELECT c.comment_id, c.content, c.created_at, u.display_name, u.image_url, u.default_avatar 
                              FROM comment c JOIN user u ON c.uuid = u.uuid
                              WHERE c.music_id = ?
-                             ORDER BY c.created_at ASC LIMIT ?, ?;`;
+                             ORDER BY c.created_at DESC LIMIT ?, ?;`;
         try {
             const result = await query(queryString, [music_id, offset, first]);
             return result;
@@ -60,6 +60,23 @@ class Song {
         } catch (error) {
             console.log(error);
             return 0;
+        }
+    }
+    async dailyTrendingSong() {
+        const queryString = `SELECT m.title, m.image_url,
+                             GROUP_CONCAT(DISTINCT a.name SEPARATOR ', ') AS artists
+                             FROM music m
+                             JOIN music_artist ma ON m.music_id = ma.music_id
+                             JOIN artist a ON a.artist_id = ma.artist_id
+                             GROUP BY m.music_id
+                             ORDER BY m.monthly_counter DESC
+                             LIMIT 1;`;
+        try {
+            const result = await query(queryString);
+            return result[0];
+        } catch (error) {
+            console.log(error);
+            return {};
         }
     }
 }
